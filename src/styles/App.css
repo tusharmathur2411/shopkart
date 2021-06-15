@@ -1,0 +1,31 @@
+.main-div {
+  position: absolute;
+  min-height: 65vh;
+  width: 100%;
+  top: 8vh;
+  padding-bottom: 50px;
+}
+
+.order-placed {
+  text-align: center;
+  width: 80%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin: auto;
+  background-color: green;
+}
+
+.bl-link {
+  color: black;
+}
+
+@media only screen and (min-width: 768px) {
+  .main-div {
+    top: 15vh;
+    padding-bottom: 100px;
+    margin-bottom: 100px;
+  }
+}

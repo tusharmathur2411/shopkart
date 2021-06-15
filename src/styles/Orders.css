@@ -1,0 +1,64 @@
+.orders-page {
+    position: absolute;
+    width: 100%;
+    padding-bottom: 50px;
+}
+
+.order-div {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-around;
+    padding: 1%;
+    width: 80%;
+    margin: 30px auto;
+    background-color: #eb5757;
+}
+
+.order-info {
+    border-style: solid;
+    border-color: gray;
+    border-width: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: fit-content;
+    margin: 30px auto;
+    width: 80%
+}
+
+.order-info > * {
+    margin: 5px 0;
+}
+
+.order-item-div {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.confirm-cancel {
+    text-align: center;
+    padding: 3px;
+}
+
+.confirm-cancel > button {
+    margin: 5px;
+}
+
+@media only screen and (min-width: 768px) {
+
+    .order-div {
+        flex-direction: row;
+    }
+
+    .order-info {
+        border: none;
+        width: auto
+    }
+
+    .confirm-cancel {
+        border-style: dotted;
+        border-width: 2px;
+        border-color: #222;
+    }
+}

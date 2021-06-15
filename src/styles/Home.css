@@ -1,0 +1,55 @@
+.category-div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: scroll;
+}
+
+/* width */
+.category-div::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Track */
+.category-div::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.category-div::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.category-div::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+}
+
+.category-header > h1 {
+  font-size: 16px;
+}
+
+.hr-line {
+  height: 2px;
+  border-width: 0;
+  width: 20%;
+  color: gray;
+  background-color: gray;
+}
+
+@media only screen and (min-width: 768px) {
+  .category-header > h1 {
+    font-size: 32px;
+  }
+
+  .hr-line {
+    width: 35%;
+  }
+
+}
