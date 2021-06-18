@@ -1,12 +1,10 @@
 .product-div {
-  margin: 0 15px;
-  background-color: #d4d0d0;
-  padding: 10px;
-  width: 125px;
-  height: 230px;
+  margin: 0.5em;
+  border-style: solid;
 }
 
 .product-div h4 {
+  text-align: center;
   font-size: 10px;
   height: 40px;
   overflow: hidden;
@@ -14,28 +12,78 @@
   margin-bottom: 0;
 }
 
-.product-div h5{
+.product-div h5 {
   font-size: 8px;
   height: 10px;
   margin: 5px auto;
 }
 
 .img-div {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 100px;
   height: 125px;
-  margin: 0 auto;
+  margin: 5px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
   background-color: white;
 }
 
+.prod-desc-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(34, 34, 34, 0.75);
+  color: white;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+@media(hover: hover) and (pointer: fine) {
+  .prod-desc-div:hover {
+    opacity: 1;
+  }
+
+  .my-btn:hover {
+    background-color: #222;
+    color: white
+  }
+}
+
 .link {
   color: #222;
   text-decoration: none;
+}
+
+.my-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 30px;
+  background-color: rgb(228, 169, 42);
+  font-weight: 700;
+  border-top: none;
+  outline: none;
+  transition: all 500ms ease;
+}
+
+.vr-line {
+  margin: 0;
+  height: 0.5px;
+  width: 60%;
+  color: gray;
+  background-color: gray;
 }
 
 .add-btn {
@@ -56,12 +104,16 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .product-div {
+
+  /* .product-div {
     margin: 0 30px;
     background-color: #d4d0d0;
     padding: 20px;
     width: 250px;
     height: 420px;
+  } */
+  .product-div {
+    margin: 1em;
   }
 
   .product-div h4 {
@@ -72,7 +124,7 @@
     margin-bottom: 0;
   }
 
-  .product-div h5{
+  .product-div h5 {
     font-size: 12px;
     font-size: auto;
     height: 20px;
@@ -85,11 +137,21 @@
     justify-content: space-evenly;
     width: 200px;
     height: 250px;
-    margin: 0 auto;
+    /* margin: 10px; */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
     background-color: white;
+  }
+
+  .my-btn {
+    flex-direction: row;
+  }
+
+  .vr-line {
+    margin: 0;
+    height: 60%;
+    width: 0.5px;
   }
 
   .add-btn {

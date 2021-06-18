@@ -16,8 +16,9 @@ export default class SignIn extends Component {
         auth
             .signInWithEmailAndPassword(email, password)
             .then(auth => {
-                this.props.startLogIn(auth.user);
+                this.props.startLogIn(auth.user)
                 this.props.loadCartForUser(auth.user.uid)
+                this.props.loadOrdersForUser(auth.user.uid)
                 this.props.history.push(this.props.history.location.pathname.replace('/signin', '') || '/')
             })
             .catch(error => alert(error.message))

@@ -5,19 +5,21 @@ const currUser = JSON.parse(sessionStorage.getItem("user"))
 function orders(state=[], action) {
     switch (action.type) {
         case "LOAD_ORDERS": return action.orders
+        case "LOGOUT": return []
         default: return state
     }    
 }
 
 function cartLoading(state=false, action) {
     switch (action.type) {
-        case "CART_LOADING": return true;
+        case "CART_LOADING": return true
         case "LOAD_CART": return false
         default: return state
     }
 }
 
 function user(state=currUser, action) {
+    console.log(action)
     switch (action.type) {
         case "LOGIN": return action.user
         case "LOGOUT": return null

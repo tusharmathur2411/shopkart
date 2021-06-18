@@ -1,29 +1,45 @@
+* {
+  transition: all 1s ease;
+}
+
 .category-div {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    overflow: scroll;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  min-width: 100%;
 }
 
-/* width */
-.category-div::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+.filter-options {
+  padding: 0.8em;
+  position: absolute;
+  transform: translateX(-100%);
+  background-color: #222;
+  width: fit-content;
+  z-index: 3;
+  color: white;
 }
 
-/* Track */
-.category-div::-webkit-scrollbar-track {
-  background: #f1f1f1;
+.filter {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
-/* Handle */
-.category-div::-webkit-scrollbar-thumb {
-  background: #888;
+.search-filter {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5em;
 }
 
-/* Handle on hover */
-.category-div::-webkit-scrollbar-thumb:hover {
-  background: #555;
+.search {
+  border: none;
+  outline: none;
+  border-bottom: 3px solid black;
+  width: 35%;
+  font-size: large;
 }
 
 .category-header {
@@ -31,7 +47,7 @@
   align-items: center;
 }
 
-.category-header > h1 {
+.category-header>h1 {
   font-size: 16px;
 }
 
@@ -44,7 +60,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .category-header > h1 {
+  .category-header>h1 {
     font-size: 32px;
   }
 
@@ -52,4 +68,7 @@
     width: 35%;
   }
 
+  .hr2-line {
+    width: 70%;
+  }
 }
