@@ -18,9 +18,6 @@ const Navbar = (props) => {
 
   return (
     <div className="navbar">
-      <Link className="nav-logo" to="/">
-        <img width="100%" className="logo" src={logo} alt="logo" />
-      </Link>
       {props.user ? (
         <div className="dropper">
           <h4>
@@ -87,6 +84,9 @@ const Navbar = (props) => {
           </Link>
         </div>
       )}
+      <Link className="nav-logo" to="/">
+        <img width="100%" className="logo" src={logo} alt="logo" />
+      </Link>
       {props.orders && Object.keys(props.orders).length > 0 ? (
         <Link className="link" to="/orders">
           <b>Orders</b>

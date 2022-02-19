@@ -1,6 +1,6 @@
 import { Redirect, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
-import SignIn from "./components/SignIn";
+import AuthPage from "./features/AuthPage";
 import Cart from "./components/Cart";
 import ProductPage from "./components/ProductPage";
 import SignUp from "./components/SignUp";
@@ -10,7 +10,7 @@ import OrderPlaced from "./components/OrderPlaced";
 export default (props) => (
   <Switch>
     <Route exact path="/" render={() => <Home {...props} />} />
-    <Route path="/signin" render={() => <SignIn {...props} />} />
+    <Route path="/signin" component={AuthPage} />
     <Route path="/signup" render={() => <SignUp {...props} />} />
     <Route path="/cart" render={() => <Cart {...props} />} />
     <Route path="/checkout" component={OrderPlaced} />

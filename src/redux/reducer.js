@@ -1,6 +1,5 @@
 import { combineReducers } from "redux";
-
-const currUser = JSON.parse(sessionStorage.getItem("user"));
+import user from "../features/AuthPage/Auth.reducer";
 
 function orders(state = [], action) {
   switch (action.type) {
@@ -19,19 +18,6 @@ function cartLoading(state = false, action) {
       return true;
     case "LOAD_CART":
       return false;
-    default:
-      return state;
-  }
-}
-
-function user(state = currUser, action) {
-  switch (action.type) {
-    case "LOGIN":
-      return action.user;
-    case "LOGOUT":
-      return null;
-    case "UPDATE_NAME":
-      return { ...state, displayName: action.updatedName };
     default:
       return state;
   }
