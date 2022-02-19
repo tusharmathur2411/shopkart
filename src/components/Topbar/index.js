@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/Navbar.css";
-import logo from "../../logo.png";
+import { LOGO_URL } from "../../constants/AppConstants";
 import cartIcon from "../../cartIcon.svg";
 import { Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
@@ -29,7 +29,7 @@ export default () => {
         </div>
       </div>
       <Link className="nav-logo" to="/">
-        <img width="100%" className="logo" src={logo} alt="logo" />
+        <img width="100%" className="logo" src={LOGO_URL} alt="logo" />
       </Link>
       {orders && Object.keys(orders).length > 0 ? (
         <Link className="link" to="/orders">
