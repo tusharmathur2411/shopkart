@@ -1,21 +1,14 @@
 import { combineReducers } from "redux";
-import user from "../features/AuthPage/Auth.reducer";
-
-function orders(state = [], action) {
-  switch (action.type) {
-    case "LOAD_ORDERS":
-      return action.orders;
-    case "LOGOUT":
-      return [];
-    default:
-      return state;
-  }
-}
+import user from "./features/AuthPage/Auth.reducer";
+import cart from "./features/Cart/Cart.reducer";
+import orders from "./features/Orders/Orders.reducer.js";
 
 function cartLoading(state = false, action) {
   switch (action.type) {
     case "CART_LOADING":
       return true;
+    case "LOAD_PRODUCTS":
+      return false;
     case "LOAD_CART":
       return false;
     default:
@@ -27,17 +20,6 @@ function products(state = [], action) {
   switch (action.type) {
     case "LOAD_PRODUCTS":
       return action.products;
-    default:
-      return state;
-  }
-}
-
-function cart(state = [], action) {
-  switch (action.type) {
-    case "LOAD_CART":
-      return action.cart;
-    case "LOGOUT":
-      return JSON.parse(localStorage.getItem("cart"));
     default:
       return state;
   }

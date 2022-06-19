@@ -11,7 +11,7 @@ let windowObjectReference = null;
 let previousUrl = null;
 let timer;
 
-export default (props) => {
+const AuthPage = () => {
   const [redirectURL, setRedirectURL] = useState(null);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ export default (props) => {
         ? history.push("/signin")
         : user &&
           history.push(history.location.pathname.replace("/signin", "") || "/"),
-    [user]
+    [history, logout, user]
   );
 
   const receiveMessage = (event) => {
@@ -85,3 +85,5 @@ export default (props) => {
     </Container>
   );
 };
+
+export default AuthPage;

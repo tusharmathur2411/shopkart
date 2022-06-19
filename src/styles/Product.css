@@ -98,7 +98,7 @@
   cursor: pointer;
 }
 
-.add-btn:hover {
+.add-btn:hover:not([disabled]) {
   background-color: #222;
   color: white
 }
