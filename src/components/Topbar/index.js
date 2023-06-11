@@ -4,7 +4,7 @@ import "./Topbar.css";
 import { LOGO_URL } from "../../constants/AppConstants";
 import cartIcon from "../../assets/cartIcon.svg";
 import { Typography } from "@mui/material";
-import Loading from "../Loading";
+import Loader from "../Loader";
 import * as CartActions from "../../features/Cart/Cart.actions";
 import * as AuthActions from "../../features/AuthPage/Auth.actions";
 import { connect } from "react-redux";
@@ -40,7 +40,7 @@ const Topbar = (props) => {
         ""
       )}
       <div className="nav-cart-link">
-        {cartLoading ? <Loading /> : ""}
+        {cartLoading ? <Loader /> : ""}
         <Link to="/cart">
           <img className="cart-icon" src={cartIcon} alt="carticon" />
           <span id="cart-count">
@@ -55,7 +55,8 @@ const Topbar = (props) => {
 const mapStateToProps = (state) => ({
   user: state.user,
   cart: state.cart,
-  orders: state.orders
+  orders: state.orders,
+  cartLoading: state.cartLoading
 });
 
 const mapDispatchToProps = (dispatch) =>

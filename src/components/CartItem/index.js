@@ -1,4 +1,4 @@
-import Loading from "../Loading";
+import Loader from "../Loader";
 import { Link } from "react-router-dom";
 
 const CartItem = ({ item, updateCart, cartLoading }) => (
@@ -17,7 +17,7 @@ const CartItem = ({ item, updateCart, cartLoading }) => (
       </Link>
       <div>
         <div className="btn-container">
-          {cartLoading ? <Loading /> : ""}
+          {cartLoading ? <Loader /> : ""}
           <div className="op-div">
             <button
               className="op-btn"
