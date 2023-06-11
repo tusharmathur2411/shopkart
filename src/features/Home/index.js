@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import Product from "./Product.js";
-import "../styles/Home.css";
+import ProductTile from "../../components/ProductTile";
+import "../../styles/Home.css";
+import * as CartActions from "../Cart/Cart.actions";
+import * as AuthActions from "../AuthPage/Auth.actions";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 const Home = (props) => {
-  const { products, addToCart } = props;
+  const { user, cart, products, addToCart } = props;
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState(false);
   const [filterList, setFilterList] = useState([]);
 
-  const categories = products.reduce(
+  const categories = Object.values(products).reduce(
     (categoryList, { category }) =>
       categoryList.includes(category)
         ? categoryList
@@ -24,6 +28,8 @@ const Home = (props) => {
       checked ? [...filters, id] : filters.filter((filter) => filter !== id)
     );
   };
+
+  const addToCartWithUser = (product) => addToCart(product, user, cart);
 
   return (
     <div>
@@ -62,7 +68,7 @@ const Home = (props) => {
                     onChange={handleFilterChange}
                     checked={filterList.includes(c)}
                   ></input>
-                  <label for={c}>{c.toUpperCase()}</label>
+                  <label htmlFor={c}>{c.toUpperCase()}</label>
                 </div>
               ))}
             </div>
@@ -86,13 +92,13 @@ const Home = (props) => {
       </div>
       <div className="home">
         <div className="category-div">
-          {products
+          {Object.values(products)
             .filter(
-              (p) => filterList.length === 0 || filterList.includes(p.category)
+              (product) => filterList.length === 0 || filterList.includes(product.category)
             )
-            .filter((p) => p.title.toLowerCase().includes(search))
-            .map((p, i) => (
-              <Product addToCart={addToCart} key={i} p={p} />
+            .filter((product) => product.title.toLowerCase().includes(search))
+            .map((product) => (
+              <ProductTile addToCart={addToCartWithUser} key={product.id} product={product} />
             ))}
         </div>
       </div>
@@ -100,4 +106,9 @@ const Home = (props) => {
   );
 };
 
-export default Home;
+const mapStateToProps = (state) => state;
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ ...CartActions, ...AuthActions }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

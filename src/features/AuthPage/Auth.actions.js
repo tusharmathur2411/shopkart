@@ -1,9 +1,9 @@
-import getUserFromToken from "../../services/getUserFromToken.util";
+import getUserFromToken from "../../services/getUserFromToken.service";
 import {
   loadCartForUser,
-  loadOrdersForUser,
-  loadCartData
-} from "../../redux/actions/cartactions";
+  loadCartData,
+} from "../Cart/Cart.actions"
+import { loadOrdersForUser } from "../Orders/Orders.actions";
 import { SERVER_URL } from "../../constants/AppConstants";
 
 export const fetchUser = () => {
@@ -11,8 +11,8 @@ export const fetchUser = () => {
     getUserFromToken().then((res) => {
       dispatch(logIn(res));
       if (res) {
-        dispatch(loadCartForUser(res.id));
-        dispatch(loadOrdersForUser(res.id));
+        dispatch(loadCartForUser());
+        dispatch(loadOrdersForUser());
       } else {
         dispatch(loadCartData(JSON.parse(localStorage.getItem("cart")) || []));
       }

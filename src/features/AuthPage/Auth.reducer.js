@@ -1,4 +1,4 @@
-export default (state = null, action) => {
+const reducer = (state = null, action) => {
   switch (action.type) {
     case "LOGIN":
       return action.user;
@@ -10,3 +10,5 @@ export default (state = null, action) => {
       return state;
   }
 };
+
+export default reducer;

@@ -1,5 +1,5 @@
-import loading from '../loading.svg'
-import "../styles/Loading.css"
+import loading from '../../assets/loading.svg'
+import "../../styles/Loading.css"
 
 const Loading = () => (
     <div width="100%" className="loading">

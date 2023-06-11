@@ -2,14 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/Navbar.css";
 import { LOGO_URL } from "../../constants/AppConstants";
-import cartIcon from "../../cartIcon.svg";
+import cartIcon from "../../assets/cartIcon.svg";
 import { Typography } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, } from "react-redux";
 import { logOut } from "../../features/AuthPage/Auth.actions";
 import Loading from "../Loading";
+import * as CartActions from "../../features/Cart/Cart.actions";
+import * as AuthActions from "../../features/AuthPage/Auth.actions";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-export default () => {
-  const { user, cart, cartLoading, orders } = useSelector((state) => state);
+const Topbar = (props) => {
+  const { user, cart, cartLoading, orders } = props;
   const dispatch = useDispatch();
 
   return (
@@ -43,10 +47,17 @@ export default () => {
         <Link to="/cart">
           <img className="cart-icon" src={cartIcon} alt="carticon" />
           <span id="cart-count">
-            {cart?.reduce((a, c) => a + c.count, 0) || ""}
+            {Object.values(cart)?.reduce((a, c) => a + c, 0) || ""}
           </span>
         </Link>
       </div>
     </div>
   );
 };
+
+const mapStateToProps = (state) => state;
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ ...CartActions, ...AuthActions }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Topbar);
