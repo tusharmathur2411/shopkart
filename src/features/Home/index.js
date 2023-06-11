@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 const Home = (props) => {
-  const { user, cart, products, addToCart } = props;
+  const { user, cart, products, addToCart, updateCart } = props;
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState(false);
   const [filterList, setFilterList] = useState([]);
@@ -30,6 +30,8 @@ const Home = (props) => {
   };
 
   const addToCartWithUser = (product) => addToCart(product, user, cart);
+
+  const updateCartWithUser = (...args) => updateCart(user, cart, ...args);
 
   return (
     <div>
@@ -98,7 +100,7 @@ const Home = (props) => {
             )
             .filter((product) => product.title.toLowerCase().includes(search))
             .map((product) => (
-              <ProductTile addToCart={addToCartWithUser} key={product.id} product={product} />
+              <ProductTile addToCart={addToCartWithUser} updateCart={updateCartWithUser} key={product.id} product={product} quantityInCart={cart[product.id]} />
             ))}
         </div>
       </div>
