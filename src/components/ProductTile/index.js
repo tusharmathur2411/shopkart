@@ -3,7 +3,7 @@ import '../../styles/Product.css'
 import { Link } from 'react-router-dom'
 
 const ProductTile = props => {
-    const { product, addToCart } = props
+    const { product, addToCart, quantityInCart, updateCart } = props;
     
     return (
         <div className="product-div">
@@ -16,12 +16,34 @@ const ProductTile = props => {
                     </div>
                 </div>
             </Link>
-            <button
-                className="my-btn"
-                onClick={() => {addToCart(product.id)}}
-            >
-                Add to cart
-            </button>
+            {
+                quantityInCart ?
+                (
+                    <div className="product-tile-buttons">
+                        <button
+                            className="my-btn"
+                            onClick={() => {updateCart(product.id, quantityInCart-1)}}
+                        >
+                            -
+                        </button>
+                        {quantityInCart}
+                        <button
+                            className="my-btn"
+                            onClick={() => {updateCart(product.id, quantityInCart+1)}}
+                        >
+                            +
+                        </button>
+                    </div>
+                ) :
+                (
+                    <button
+                        className="my-btn"
+                        onClick={() => {addToCart(product.id)}}
+                    >
+                        Add to cart
+                    </button>
+                )
+            }
         </div>
     )
 }
